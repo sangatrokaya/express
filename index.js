@@ -23,7 +23,7 @@ app.post('/register', (req, res) => {
   })
   if (matchedList.length > 0){
     res.json({
-      msg: "User already exist"
+      msg: "User already exist!!!"
     })
   }else{
     res.json({
