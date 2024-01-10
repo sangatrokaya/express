@@ -16,7 +16,13 @@ const users = [
 ]
 
 app.put('/users/:id', (req, res) => {
-  console.log(req.params.id)
+  const updatedUser = users.map((item,id) => {
+    if(item.id == req.params.id){
+      item = {...item, ...req.body}
+    }
+    return item
+  })
+  res.json(updatedUser)
 })
 
 app.listen(port, () => {
