@@ -10,7 +10,13 @@ const port = 5000
 const users = ['ram','shyam','sangat','krish']
 
 app.get('/users', (req, res) => {
-  res.send(users)
+  console.log(req.query.startswith)
+  const filteredUser = users.filter((item,id)=>{
+    if(item.includes(req.query.startswith)){
+      return item
+    }
+  })
+  res.send(filteredUser)
 })
 
 app.listen(port, () => {
