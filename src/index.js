@@ -19,6 +19,18 @@ app.get('/users', async(req, res) => {
   if (list) res.json({list})
 })
 
+app.delete('/users/:id', async(req, res) => {
+  try{
+    const result = await User.findByIdAndDelete(req.params.id)
+    if (result) {
+      res.json({msg: "deleted successfully"})
+    }
+  }catch(err){
+    console.log(err)
+  }
+
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
