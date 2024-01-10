@@ -21,7 +21,15 @@ app.post('/register', (req, res) => {
       return item
     }
   })
-  console.log(matchedList)
+  if (matchedList.length > 0){
+    res.json({
+      msg: "User already exist"
+    })
+  }else{
+    res.json({
+      msg: "Registration successful"
+    })
+  }
 })
 
 app.listen(port, () => {
