@@ -16,7 +16,12 @@ const users = [
 ]
 
 app.post('/register', (req, res) => {
-  console.log(req.body)
+  const matchedList = users.filter((item,id)=>{
+    if (item.name === req.body.name){
+      return item
+    }
+  })
+  console.log(matchedList)
 })
 
 app.listen(port, () => {
