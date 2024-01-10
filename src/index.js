@@ -8,24 +8,37 @@ const User = require('./models/user')
 connection()
 
 
-app.post('/register', async(req, res) => {
+app.post('/register', async (req, res) => {
   await User.create(req.body)
 })
 
 
-app.get('/users', async(req, res) => {
+app.get('/users', async (req, res) => {
   const list = await User.find()
   console.log(list)
-  if (list) res.json({list})
+  if (list) res.json({ list })
 })
 
-app.delete('/users/:id', async(req, res) => {
-  try{
+app.delete('/users/:id', async (req, res) => {
+  try {
     const result = await User.findByIdAndDelete(req.params.id)
     if (result) {
-      res.json({msg: "deleted successfully"})
+      res.json({ msg: "deleted successfully" })
     }
-  }catch(err){
+  } catch (err) {
+    console.log(err)
+  }
+
+})
+
+
+app.put('/users/:id', async (req, res) => {
+  try {
+    const result = await User.findByIdAndUpdate(req.params.id, req.body)
+    if (result) {
+      res.json({msg: "edited successfully"})
+    }
+  } catch (err) {
     console.log(err)
   }
 
