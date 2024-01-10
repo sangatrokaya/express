@@ -14,15 +14,8 @@ const users = [
   {id:456, name: 'gopal', address: 'butwal' }
 ]
 
-app.get('/users/:id', (req, res) => {
-  const userId = parseInt(req.params.id)
-
-  const user = users.find((item) => item.id === userId)
-  if (user){
-    res.send(user)
-  }else{
-    res.status(404).send('user not found')
-  }
+app.post('/register', (req, res) => {
+console.log(req)
 })
 
 app.listen(port, () => {
