@@ -44,6 +44,18 @@ app.put('/users/:id', async (req, res) => {
 
 })
 
+
+app.patch('/change-username/:id', async (req, res) => {
+  try {
+    const result = await User.findByIdAndUpdate(req.params.id, {userName: req.body.userName})
+    if (result) {
+      res.json({msg: req.body.userName + " has been edited successfully"})
+    }  } catch (err) {
+    console.log(err)
+  }
+
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
