@@ -15,21 +15,8 @@ const users = [
   { id: 456, name: 'gopal', address: 'butwal' }
 ]
 
-app.post('/register', (req, res) => {
-  const matchedList = users.filter((item,id)=>{
-    if (item.name === req.body.name){
-      return item
-    }
-  })
-  if (matchedList.length > 0){
-    res.json({
-      msg: "User already exist!!!"
-    })
-  }else{
-    res.json({
-      msg: "Registration successful"
-    })
-  }
+app.put('/users/:id', (req, res) => {
+  console.log(req.params.id)
 })
 
 app.listen(port, () => {
